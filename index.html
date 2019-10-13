@@ -1,0 +1,217 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Color Thief</title>
+
+  
+  <script src="src/color-thief.js"></script>
+  <script src="examples/js/jquery.js"></script>
+  <script src="examples/js/mustache.js"></script>
+  <script src="examples/js/demo.js"></script>
+
+<style>
+body{  font-family:arial;margin:0;padding-bottom:100px;}
+.colorbox{
+  color:#fff;
+  padding:10px;
+  position:fixed;
+  bottom:0;
+}
+.randpic{width:200px;}
+.domcolor{ padding:10px;color:#fff;width:180px;}
+</style>
+</head>
+<body>
+
+  <script>
+$(document).ready(function(){
+ii = 0;
+randomNum =  Math.round(Math.random()*100);
+
+$.getJSON('https://pixabay.com/api/?key=723985-f0607cc184e713148830b2d21&q=colorful&page='+ randomNum +'&per_page=6&image_type=photo',
+    function(data){
+      $.each(data.hits, function(i,item){
+        var randImage = item.webformatURL;
+
+       
+    
+    
+  var img = new Image();
+  img.onload = function () {
+  var colorThief = new ColorThief();
+  colorThief.getColor(img);
+  var domColor = colorThief.getColor(img);
+
+ $('#pic').prepend('<img id="randpic'+ii+'" class="randpic" src="' + randImage + ')" />');
+
+   $('#pic').prepend('<div class="domcolor" id="dom'+ii+'" style="background-color:rgb('+domColor+')">Pick Photo: <strong id="dom'+ii+'strong">' + domColor + '</strong><div/>');
+ ii++;
+
+};
+img.crossOrigin = 'Anonymous';
+img.src = randImage;
+;
+
+      });
+    });
+
+
+  });
+
+
+
+
+</script>
+<div id="pic">
+
+  </div>
+
+
+
+<script>
+
+</script>
+
+
+<div id="abc" class="colorbox"> </div>
+
+
+
+
+<script>
+
+
+  var colorNew = Math.random()*256|0;
+  var colorNew2 = Math.random()*256|0;
+  var colorNew3 = Math.random()*256|0;
+  var colorNew4 = colorNew + ','+colorNew2 + ','+colorNew3;
+  //document.write(colorNew);
+
+
+
+$(document).ready(function(){
+
+ 
+  $('#xyz').css('background-color','rgb('+colorNew4+')');
+
+
+  document.getElementById('randcolorstrong').innerHTML += colorNew4;
+
+
+
+});
+
+</script>
+
+
+
+ 
+
+
+<div id="xyz" class="colorbox">Match this Color: <strong id="randcolorstrong"></strong> </div>
+
+  
+<script>
+$(document).ready(function(){
+  
+
+   $("body").on("click", "#dom5", function(){
+  var dom5string = $("#dom5strong").text();
+  var dom5array = dom5string.split(',');
+  var randstring = $("#randcolorstrong").text();
+  var randarray = randstring.split(',');
+  console.log(dom5array);
+  var score1 = Math.abs(dom5array[0]-randarray[0]);
+  var score2 = Math.abs(dom5array[1]-randarray[1]);
+  var score3 = Math.abs(dom5array[2]-randarray[2]);
+  var finalscore = score1+score2+score3;
+  console.log(score1,score2,score3);
+  console.log('Total Score:'+finalscore);
+  alert('Total Score:'+finalscore);
+    });
+
+ $("body").on("click", "#dom4", function(){
+  var dom4string = $("#dom4strong").text();
+  var dom4array = dom4string.split(',');
+  var randstring = $("#randcolorstrong").text();
+  var randarray = randstring.split(',');
+  console.log(dom4array);
+  var score1 = Math.abs(dom4array[0]-randarray[0]);
+  var score2 = Math.abs(dom4array[1]-randarray[1]);
+  var score3 = Math.abs(dom4array[2]-randarray[2]);
+  var finalscore = score1+score2+score3;
+  console.log(score1,score2,score3);
+  console.log('Total Score:'+finalscore);
+  alert('Total Score:'+finalscore);
+    });
+
+   $("body").on("click", "#dom3", function(){
+  var dom3string = $("#dom3strong").text();
+  var dom3array = dom3string.split(',');
+  var randstring = $("#randcolorstrong").text();
+  var randarray = randstring.split(',');
+  console.log(dom3array);
+  var score1 = Math.abs(dom3array[0]-randarray[0]);
+  var score2 = Math.abs(dom3array[1]-randarray[1]);
+  var score3 = Math.abs(dom3array[2]-randarray[2]);
+  var finalscore = score1+score2+score3;
+  console.log(score1,score2,score3);
+  console.log('Total Score:'+finalscore);
+  alert('Total Score:'+finalscore);
+    });
+
+
+  $("body").on("click", "#dom2", function(){
+  var dom2string = $("#dom2strong").text();
+  var dom2array = dom2string.split(',');
+  var randstring = $("#randcolorstrong").text();
+  var randarray = randstring.split(',');
+  console.log(dom2array);
+  var score1 = Math.abs(dom2array[0]-randarray[0]);
+  var score2 = Math.abs(dom2array[1]-randarray[1]);
+  var score3 = Math.abs(dom2array[2]-randarray[2]);
+  var finalscore = score1+score2+score3;
+  console.log(score1,score2,score3);
+  console.log('Total Score:'+finalscore);
+  alert('Total Score:'+finalscore);
+    });
+
+    $("body").on("click", "#dom1", function(){
+  var dom1string = $("#dom1strong").text();
+  var dom1array = dom1string.split(',');
+  var randstring = $("#randcolorstrong").text();
+  var randarray = randstring.split(',');
+  console.log(dom1array);
+  var score1 = Math.abs(dom1array[0]-randarray[0]);
+  var score2 = Math.abs(dom1array[1]-randarray[1]);
+  var score3 = Math.abs(dom1array[2]-randarray[2]);
+  var finalscore = score1+score2+score3;
+  console.log(score1,score2,score3);
+  console.log('Total Score:'+finalscore);
+  alert('Total Score:'+finalscore);
+    });
+
+      $("body").on("click", "#dom0", function(){
+  var dom0string = $("#dom0strong").text();
+  var dom0array = dom0string.split(',');
+  var randstring = $("#randcolorstrong").text();
+  var randarray = randstring.split(',');
+  console.log(dom0array);
+  var score1 = Math.abs(dom0array[0]-randarray[0]);
+  var score2 = Math.abs(dom0array[1]-randarray[1]);
+  var score3 = Math.abs(dom0array[2]-randarray[2]);
+  var finalscore = score1+score2+score3;
+  console.log(score1,score2,score3);
+  console.log('Total Score:'+finalscore);
+  alert('Total Score:'+finalscore);
+    });
+
+  });
+</script>
+
+
+</body>
+</html>
